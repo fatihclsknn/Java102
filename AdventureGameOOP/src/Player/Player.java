@@ -101,5 +101,8 @@ public class Player {
         this.setMoney(gameChar.getMoney());
         this.setHealth(gameChar.getHealth());
     }
+
+
+
 }
 

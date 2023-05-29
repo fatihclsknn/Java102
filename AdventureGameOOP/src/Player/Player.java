@@ -1,28 +1,20 @@
 package Player;
 
-import GameChar.*;
 
-import java.util.Scanner;
+import Charcter.Samurai;
+import Charcter.Knight;
+import Charcter.Archer;
+
 
 public class Player {
-    private Scanner input = new Scanner(System.in);
-    private int ID;
+
     private int damage;
-    private int health;
+    private int healthy;
     private int money;
     private String name;
-    private String charName;
 
     public Player(String name) {
         this.name = name;
-    }
-
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
     }
 
     public int getDamage() {
@@ -33,12 +25,12 @@ public class Player {
         this.damage = damage;
     }
 
-    public int getHealth() {
-        return health;
+    public int getHealthy() {
+        return healthy;
     }
 
-    public void setHealth(int health) {
-        this.health = health;
+    public void setHealthy(int healthy) {
+        this.healthy = healthy;
     }
 
     public int getMoney() {
@@ -57,52 +49,52 @@ public class Player {
         this.name = name;
     }
 
-    public String getCharName() {
-        return charName;
-    }
-
-    public void setCharName(String charName) {
-        this.charName = charName;
-    }
-
     public void selectChar() {
-        GameChar[] charList = {new Samurai(), new Archer(), new Knight()};
-        System.out.println("-----------------------------------");
-        for (GameChar i : charList) {
-            System.out.printf("Karakter ID:%d \t\t Karakter İsim: %s \t\t Hasar:%d \t\t" +
-                    " Sağlık:%d \t\t Para:%d \n", i.getID(), i.getName(), i.getDamage(), i.getHealth(), i.getMoney());
-        }
-        System.out.println("-----------------------------------");
-        System.out.println("Seçtiğiniz karakterin ID'sini giriniz");
-        int selectChar = input.nextInt();
-        switch (selectChar)
-        {
+        System.out.println("------------------------");
+        System.out.println("Karakter id:1\t : Samuray \t Hasar : 5 \t Sağlık : 21 \t Para : 15");
+        System.out.println("Karakter id:2\t : Okçu \t Hasar : 7 \t Sağlık : 18 \t Para : 20");
+        System.out.println("Karakter id:3\t : Şovalye \t Hasar : 8 \t Sağlık : 24 \t Para : 5");
+    }
+
+    public void selectLoc() {
+        System.out.println("------------------------");
+        System.out.println("1)Ev -->\t Özellikleri : Can yenilenir. \t\t\t Adress : 1");
+        System.out.println("2)Mağaza -->\t Özellikleri : Silah ve kalkan alınır. \t\t Adress : 2");
+        System.out.println("3)Mağara -->\t Canavar: (1-3)Zombi \t Ödül : Loot + Food \t Adress : 3");
+        System.out.println("4)Orman -->\t Canavar: (1-3)Vampir \t Ödül : Loot + Wood \t Adress : 4");
+        System.out.println("5)Nehir -->\t Canavar: (1-3)Ayı \t Ödül : Loot + Water \t Adress : 5");
+        System.out.println("0)ÇIKIŞ ");
+        System.out.println("");
+    }
+
+    public void createChar(int charNum) {
+        switch (charNum) {
             case 1:
-                initPlayer(new Samurai());
+                Samurai samurai = new Samurai(1, "Samuray", 5, 21, 15);
+                System.out.println("Seçilen karakter :  Samuray");
+                this.damage = samurai.damage;
+                this.healthy = samurai.health;
+                this.money = samurai.money;
                 break;
             case 2:
-                initPlayer(new Archer());
+                Archer archer = new Archer(2, "Okçu", 7, 18, 20);
+                System.out.println("Seçilen karakter :  Okçu");
+                this.damage = archer.damage;
+                this.healthy = archer.health;
+                this.money = archer.money;
                 break;
             case 3:
-                initPlayer(new Knight());
+                Knight knight = new Knight(3, "Şovalye", 8, 24, 5);
+                System.out.println("Seçilen karakter :  Şovalye");
+                this.damage = knight.damage;
+                this.healthy = knight.health;
+                this.money = knight.money;
                 break;
             default:
-                initPlayer(new Samurai());
-
+                System.out.println("Hatalı giriş !");
+                System.exit(0);
+                break;
         }
-
-        System.out.printf("Seçilen Karakter İsim: %s \t\t Hasar:%d \t\t" +
-                " Sağlık:%d \t\t Para:%d \n", this.getCharName(), this.getDamage(),this.getHealth(), this.getMoney());
     }
-    public  void initPlayer(GameChar gameChar)
-    {
-        this.setCharName(gameChar.getName());
-        this.setDamage(gameChar.getDamage());
-        this.setMoney(gameChar.getMoney());
-        this.setHealth(gameChar.getHealth());
-    }
-
-
 
 }
-

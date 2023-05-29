@@ -1,21 +1,18 @@
 package Location;
 
-import Player.*;
+import Player.Player;
 
-
+import java.util.Scanner;
 
 public abstract class Location {
-   private Player   player;
+    String name ;
 
-    public Location(Player player, String name) {
-        this.player = player;
-        this.name = name;
+
+    public Location(String name ){
+        this.name=name;
     }
 
-    private String   name;
+    public abstract boolean onLocation();
 
-   public   void  location(){}
-
-    abstract  boolean onLocation();
 
 }
